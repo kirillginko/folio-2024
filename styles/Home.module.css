@@ -1,5 +1,10 @@
 .container {
   padding: 0 2rem;
+  background-image: url("https://cdn3.geckoandfly.com/wp-content/uploads/2016/06/os-x-10.11-wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: auto;
 }
 
 .main {
