@@ -1,0 +1,105 @@
+.window {
+  width: 800px;
+  height: 600px;
+  background-color: #f1f1f1;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: linear-gradient(to bottom, #ececec, #d1d1d1);
+  border-bottom: 1px solid #aaa;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.window-header .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.window-header .buttons .button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+.window-header .buttons .button.close {
+  background-color: #ff5c5c;
+}
+
+.window-header .buttons .button.minimize {
+  background-color: #ffbd4c;
+}
+
+.window-header .buttons .button.maximize {
+  background-color: #00ca4e;
+}
+
+.window-header .title {
+  font-size: 14px;
+  color: #333;
+}
+
+.window-sidebar {
+  width: 200px;
+  background-color: #ececec;
+  border-right: 1px solid #aaa;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.window-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.window-sidebar li {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.window-sidebar li:hover {
+  background-color: #d1d1d1;
+}
+
+.window-sidebar li.active {
+  background-color: #b8d4fe;
+}
+
+.window-content {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.window-content .folder {
+  width: 80px;
+  text-align: center;
+  margin: 10px;
+}
+
+.window-content .folder img {
+  width: 64px;
+  height: 64px;
+}
+
+.window-content .folder span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+}

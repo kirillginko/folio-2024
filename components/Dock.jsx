@@ -3,8 +3,8 @@ import styles from "../styles/Dock.module.css";
 
 function Dock() {
   return (
-    <div id="container" className={styles.container}>
-      <div id="dock">
+    <div className={styles.container}>
+      <div id="dock" className={styles.dock}>
         <ul>
           <li className={styles.dockItem}>
             <span>Finder</span>
@@ -55,6 +55,7 @@ function Dock() {
             <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224841/iTunes_2_fmevlt.png"
+                alt="iTunes"
                 width={50}
                 height={50}
               />
@@ -65,7 +66,7 @@ function Dock() {
             <a href="#ps-one">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224843/Preview_smriqk.png"
-                alt="Photos"
+                alt="Photoshop"
                 width={50}
                 height={50}
               />
@@ -87,7 +88,7 @@ function Dock() {
             <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/TextEdit_gs86il.png"
-                alt="After Effects"
+                alt="Text Edit"
                 width={50}
                 height={50}
               />
@@ -97,22 +98,19 @@ function Dock() {
             <span>Trash Can</span>
             <a href="#">
               <Image
-                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/Trash_empty_vepvhm.png"
+                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/System_Prefrences_hjobyq.png"
+                alt="System Preferences"
                 width={50}
                 height={50}
               />
             </a>
           </li>
           <li className={styles.dockItem}>
-            <span>|</span>
-            <a href="#">|</a>
-          </li>
-          <li className={styles.dockItem}>
             <span>System Preferences</span>
             <a href="#">
               <Image
-                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/System_Prefrences_hjobyq.png"
-                alt="System Preferences"
+                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/Trash_empty_vepvhm.png"
+                alt="Trash Can"
                 width={50}
                 height={50}
               />

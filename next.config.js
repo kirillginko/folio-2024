@@ -2,12 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "upload.wikimedia.org",
-      "icons.iconarchive.com",
-      "blog.codepen.io",
-      "res.cloudinary.com",
-    ],
+    domains: ["res.cloudinary.com"],
   },
 };
 
