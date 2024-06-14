@@ -1,0 +1,207 @@
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 350px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.navButtons {
+  display: flex;
+  gap: 5px;
+}
+
+.redButton,
+.yellowButton,
+.greenButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.redButton {
+  background-color: #ff605c;
+}
+
+.yellowButton {
+  background-color: #ffbd44;
+}
+
+.greenButton {
+  background-color: #00ca4e;
+}
+
+.navTitle {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.content {
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 13px;
+  color: #000;
+  border-radius: 10.5px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+  font-size: 0.7rem; /* Adjusted font size */
+  font-family: "myriad-pro", system-ui;
+  height: 2.5em; /* Adjusted height */
+  padding: 0 1em; /* Adjusted padding */
+  min-width: 6em; /* Adjusted min-width */
+  border-radius: 1000px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text */
+}
+
+.button.primary {
+  background: linear-gradient(
+    rgba(0, 65, 184, 0.625),
+    rgba(45, 115, 199, 0.625),
+    rgba(33, 160, 196, 0.625)
+  );
+  box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+    0 0.125em 0.125em rgba(0, 78, 187, 0.5),
+    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
+    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75);
+}
+
+.button.primary:focus,
+.button.primary:active {
+  box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+    0 0.125em 0.125em rgba(0, 78, 187, 0.5),
+    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
+    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75),
+    0 0 0.5em rgba(52, 106, 227, 0.5);
+}
+
+.button.secondary {
+  background: linear-gradient(
+    rgba(160, 160, 160, 0.625),
+    rgba(255, 255, 255, 0.625)
+  );
+  box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2),
+    0 0.125em 0.125em rgba(0, 0, 0, 0.3),
+    inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4),
+    inset 0 0.375em 0.5em 0.25em #bbbbbb;
+}
+
+.button.secondary:focus,
+.button.secondary:active {
+  box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2),
+    0 0.125em 0.125em rgba(0, 0, 0, 0.3),
+    inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4),
+    inset 0 0.375em 0.5em 0.25em #bbbbbb, 0 0 0.5em rgba(0, 0, 0, 0.25);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 33%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.3)
+  );
+  width: calc(100% - 0.875em);
+  border-radius: 2em 2em 0.5em 0.5em;
+  top: 5%;
+  filter: blur(1px);
+  z-index: 2;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 33%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.5)
+  );
+  width: calc(100% - 1.25em);
+  border-radius: 0.75em;
+  bottom: 10%;
+  filter: blur(3px);
+}
+
+.button span {
+  position: relative;
+  top: -1px;
+  z-index: 1;
+  letter-spacing: 0.0375em;
+  -webkit-text-stroke-width: 0.025em;
+  -webkit-text-stroke-color: #000000;
+}
+
+.button.primary span {
+  text-shadow: 0 0.25em 0.2em rgba(30, 77, 161, 0.5);
+}
+
+.button.secondary span {
+  text-shadow: 0 0.25em 0.2em rgba(0, 0, 0, 0.25);
+}
+
+.info {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.footer {
+  font-size: 12px;
+  color: gray;
+}

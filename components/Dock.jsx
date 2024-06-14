@@ -43,7 +43,7 @@ function Dock() {
             <span>Web Browser</span>
             <a href="#">
               <Image
-                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224840/Internet_Explorer_t9xkdj.png"
+                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224844/Safari_swdhre.png"
                 alt="Chrome"
                 width={50}
                 height={50}
@@ -62,10 +62,10 @@ function Dock() {
             </a>
           </li>
           <li className={styles.dockItem}>
-            <span>Photoshop</span>
+            <span>iPhoto</span>
             <a href="#ps-one">
               <Image
-                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224843/Preview_smriqk.png"
+                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224840/iPhoto_g9ifyl.png"
                 alt="Photoshop"
                 width={50}
                 height={50}
@@ -73,10 +73,10 @@ function Dock() {
             </a>
           </li>
           <li className={styles.dockItem}>
-            <span>Premiere</span>
+            <span>Video Player</span>
             <a href="#">
               <Image
-                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224840/iMovie_HD_idbldj.png"
+                src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224843/QuickTime_Player_xk7bhn.png"
                 alt="Premiere"
                 width={50}
                 height={50}
@@ -95,7 +95,7 @@ function Dock() {
             </a>
           </li>
           <li className={styles.dockItem}>
-            <span>Trash Can</span>
+            <span>System Settings</span>
             <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/System_Prefrences_hjobyq.png"
@@ -106,7 +106,7 @@ function Dock() {
             </a>
           </li>
           <li className={styles.dockItem}>
-            <span>System Preferences</span>
+            <span>Trash</span>
             <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/Trash_empty_vepvhm.png"

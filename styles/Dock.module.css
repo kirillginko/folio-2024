@@ -8,7 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 0px;
+  margin-bottom: -10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -29,12 +30,12 @@
   list-style-type: none;
   display: inline-block;
   position: relative;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .dockItem img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   -webkit-box-reflect: below 2px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255, 255, 255, 0.5)));
   transition: transform 0.3s; /* Smooth transition */
   transform-origin: 40% 70%;
@@ -47,7 +48,7 @@
 .dockItem span {
   display: none;
   position: absolute;
-  bottom: 70px;
+  bottom: 90px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);

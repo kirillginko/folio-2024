@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Window.module.css";
-import { gsap, Draggable } from "../gsap"; // Adjust the path as necessary
+import { Draggable } from "../gsap"; // Adjust the path as necessary
 
 const Window = () => {
   const [activeItem, setActiveItem] = useState("wikipedia");
@@ -31,7 +31,7 @@ const Window = () => {
 
   const folders = [
     {
-      name: "Desktop",
+      name: "Projects",
       img: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
     },
     {
@@ -72,7 +72,7 @@ const Window = () => {
           <div className={`${styles.button} ${styles.minimize}`}></div>
           <div className={`${styles.button} ${styles.maximize}`}></div>
         </div>
-        <div className={styles.title}>wikipedia</div>
+        <div className={styles.title}>Finder</div>
         <div></div>
       </div>
       <div style={{ display: "flex", height: "100%" }}>
