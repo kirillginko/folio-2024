@@ -31,7 +31,7 @@ const About = () => {
           <p>Version 10.3.9</p>
         </div>
         <div className={styles.body}>
-          <button className={`${styles.button} ${styles.secondary}`}>
+          <button className={`${styles.button} ${styles.primary}`}>
             Software Update...
           </button>
           <div className={styles.info}>

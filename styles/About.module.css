@@ -93,8 +93,8 @@
 .button {
   font-size: 0.7rem; /* Adjusted font size */
   font-family: "myriad-pro", system-ui;
-  height: 2.5em; /* Adjusted height */
-  padding: 0 1em; /* Adjusted padding */
+  height: 2em; /* Adjusted height */
+  padding: 0 2em; /* Adjusted padding */
   min-width: 6em; /* Adjusted min-width */
   border-radius: 1000px;
   position: relative;
