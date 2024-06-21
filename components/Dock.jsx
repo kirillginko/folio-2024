@@ -13,7 +13,7 @@ function Dock() {
     setTimeout(() => {
       imgElement.classList.remove(styles.bounce);
       toggleFunc();
-    }, 1200); // Match the duration of the bounce animation
+    }, 900); // Match the duration of the bounce animation
   };
 
   return (
@@ -26,8 +26,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224838/Finder_kmiknb.png"
                 alt="Finder"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 onClick={(event) => handleBounceClick(event, toggleWindow)}
               />
             </a>
@@ -38,8 +38,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224836/Applications_Folder_l8g5jy.png"
                 alt="Applications"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -49,8 +49,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/iCal_tzwfww.png"
                 alt="Calendar"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -60,8 +60,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224844/Safari_swdhre.png"
                 alt="Chrome"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -71,8 +71,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224841/iTunes_2_fmevlt.png"
                 alt="iTunes"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -82,8 +82,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224840/iPhoto_g9ifyl.png"
                 alt="Photoshop"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -93,8 +93,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224843/QuickTime_Player_xk7bhn.png"
                 alt="Premiere"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -104,8 +104,8 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/TextEdit_gs86il.png"
                 alt="Text Edit"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
@@ -115,19 +115,20 @@ function Dock() {
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/System_Prefrences_hjobyq.png"
                 alt="System Preferences"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
+          <li className={styles.divider}></li>
           <li className={styles.dockItem}>
             <span>Trash</span>
             <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224845/Trash_empty_vepvhm.png"
                 alt="Trash Can"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
               />
             </a>
           </li>
