@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -14,10 +14,12 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import SearchIcon from "@mui/icons-material/Search";
 import ListIcon from "@mui/icons-material/List";
 import styles from "../styles/TopNav.module.css";
+import { WindowContext } from "../WindowContext"; // Import WindowContext
 
 const TopNav = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuName, setMenuName] = useState("");
+  const { toggleAbout } = useContext(WindowContext); // Destructure toggleAbout
 
   const handleMenuOpen = (event, menu) => {
     setAnchorEl(event.currentTarget);
@@ -29,7 +31,26 @@ const TopNav = () => {
     setMenuName("");
   };
 
+  const handleMenuItemClick = (option) => {
+    if (option === "About This Mac") {
+      toggleAbout(); // Toggle About window
+    }
+    handleMenuClose();
+  };
+
   const menuOptions = {
+    Apple: [
+      "About This Mac",
+      "System Settings...",
+      "App Store",
+      "Recent Items",
+      "Force Quit Finder",
+      "Sleep",
+      "Restart...",
+      "Shut Down...",
+      "Lock Screen",
+      "Log Out",
+    ],
     Finder: [
       "About Finder",
       "Preferences...",
@@ -66,7 +87,7 @@ const TopNav = () => {
       {menuOptions[menu].map((option, index) => (
         <MenuItem
           key={index}
-          onClick={handleMenuClose}
+          onClick={() => handleMenuItemClick(option)}
           className={styles.menuItem}
         >
           {option}
@@ -82,18 +103,24 @@ const TopNav = () => {
           className={styles.leftOptions}
           sx={{ display: "flex", alignItems: "center" }}
         >
-          <AppleIcon className={`${styles.option} ${styles.appleLogo}`} />
-          {Object.keys(menuOptions).map((menu) => (
-            <Typography
-              key={menu}
-              variant="h6"
-              className={styles.option}
-              component="div"
-              onClick={(event) => handleMenuOpen(event, menu)}
-            >
-              {menu}
-            </Typography>
-          ))}
+          <AppleIcon
+            className={`${styles.option} ${styles.appleLogo}`}
+            onClick={(event) => handleMenuOpen(event, "Apple")}
+          />
+          {Object.keys(menuOptions).map(
+            (menu) =>
+              menu !== "Apple" && (
+                <Typography
+                  key={menu}
+                  variant="h6"
+                  className={styles.option}
+                  component="div"
+                  onClick={(event) => handleMenuOpen(event, menu)}
+                >
+                  {menu}
+                </Typography>
+              )
+          )}
         </Box>
         <Box
           className={styles.rightOptions}

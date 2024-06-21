@@ -1,24 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import styles from "../styles/About.module.css";
 import { Draggable } from "../gsap";
 import AppleIcon from "@mui/icons-material/Apple";
+import { WindowContext } from "../WindowContext"; // Ensure the import path is correct
+
 const About = () => {
+  const { isAboutOpen, toggleAbout } = useContext(WindowContext);
+  const draggableRef = useRef(null);
+  const handleRef = useRef(null);
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      Draggable.create(".draggable-window", {
+    if (isAboutOpen && typeof window !== "undefined") {
+      const draggableInstance = Draggable.create(draggableRef.current, {
         type: "x,y",
         edgeResistance: 0.65,
         bounds: "body",
         inertia: true,
+        trigger: handleRef.current, // Set the handle to the navbar
       });
+
+      return () => {
+        if (draggableInstance[0]) {
+          draggableInstance[0].kill();
+        }
+      };
     }
-  }, []);
+  }, [isAboutOpen]);
+
+  if (!isAboutOpen) {
+    return null;
+  }
 
   return (
-    <div className={`${styles.container} draggable-window`}>
-      <div className={styles.navbar}>
+    <div ref={draggableRef} className={`${styles.container} draggable-window`}>
+      <div ref={handleRef} className={`${styles.navbar}`}>
         <div className={styles.navButtons}>
-          <div className={styles.redButton}></div>
+          <div className={styles.redButton} onClick={toggleAbout}></div>
           <div className={styles.yellowButton}></div>
           <div className={styles.greenButton}></div>
         </div>

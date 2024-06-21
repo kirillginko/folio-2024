@@ -62,3 +62,31 @@
 .dockItem:hover span {
   display: inline-block;
 }
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1.1);
+  }
+  40% {
+    transform: translateY(-20px) scale(1.2);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.2);
+  }
+}
+
+.dockItem img {
+  transition: transform 0.3s;
+}
+
+.dockItem img:hover {
+  transform: scale(1.1);
+}
+
+.bounce {
+  animation: bounce 1.5s ease-out; /* Smooth easing function */
+}

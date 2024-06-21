@@ -1,7 +1,21 @@
+import React, { useContext } from "react";
 import Image from "next/image";
 import styles from "../styles/Dock.module.css";
+import { WindowContext } from "../WindowContext";
 
 function Dock() {
+  const { isWindowOpen, toggleWindow } = useContext(WindowContext);
+
+  const handleBounceClick = (event, toggleFunc) => {
+    const imgElement = event.currentTarget;
+
+    imgElement.classList.add(styles.bounce);
+    setTimeout(() => {
+      imgElement.classList.remove(styles.bounce);
+      toggleFunc();
+    }, 1200); // Match the duration of the bounce animation
+  };
+
   return (
     <div className={styles.container}>
       <div id="dock" className={styles.dock}>
@@ -14,6 +28,7 @@ function Dock() {
                 alt="Finder"
                 width={50}
                 height={50}
+                onClick={(event) => handleBounceClick(event, toggleWindow)}
               />
             </a>
           </li>
