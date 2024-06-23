@@ -5,6 +5,7 @@ import { WindowContext } from "../WindowContext";
 
 function Dock() {
   const { isWindowOpen, toggleWindow } = useContext(WindowContext);
+  const { isPlayerOpen, togglePlayer } = useContext(WindowContext);
 
   const handleBounceClick = (event, toggleFunc) => {
     const imgElement = event.currentTarget;
@@ -13,7 +14,7 @@ function Dock() {
     setTimeout(() => {
       imgElement.classList.remove(styles.bounce);
       toggleFunc();
-    }, 900); // Match the duration of the bounce animation
+    }, 800); // Match the duration of the bounce animation
   };
 
   return (
@@ -95,6 +96,7 @@ function Dock() {
                 alt="Premiere"
                 width={40}
                 height={40}
+                onClick={(event) => handleBounceClick(event, togglePlayer)}
               />
             </a>
           </li>

@@ -5,6 +5,7 @@ import Dock from "../components/Dock";
 import TopNav from "../components/TopNav";
 import Window from "../components/Window";
 import About from "../components/About";
+import Player from "../components/Player";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <main className={styles.main}>
           <Window />
           <About />
+          <Player />
           <Dock />
         </main>
       </div>
