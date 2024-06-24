@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { PlayerProvider } from "../PlayerContext";
 import { WindowProvider } from "../WindowContext";
 import Dock from "../components/Dock";
 import TopNav from "../components/TopNav";
@@ -20,8 +21,10 @@ export default function Home() {
         <main className={styles.main}>
           <Window />
           <About />
-          <Player />
-          <Dock />
+          <PlayerProvider>
+            <Player />
+            <Dock />
+          </PlayerProvider>
         </main>
       </div>
     </WindowProvider>

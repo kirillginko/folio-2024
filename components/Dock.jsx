@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import styles from "../styles/Dock.module.css";
-import { WindowContext } from "../WindowContext";
+import { PlayerContext } from "../PlayerContext";
 
 function Dock() {
-  const { isWindowOpen, toggleWindow } = useContext(WindowContext);
-  const { isPlayerOpen, togglePlayer } = useContext(WindowContext);
+  const { togglePlayer } = useContext(PlayerContext);
 
   const handleBounceClick = (event, toggleFunc) => {
     const imgElement = event.currentTarget;
@@ -29,7 +28,6 @@ function Dock() {
                 alt="Finder"
                 width={40}
                 height={40}
-                onClick={(event) => handleBounceClick(event, toggleWindow)}
               />
             </a>
           </li>
