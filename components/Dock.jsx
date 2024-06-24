@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import styles from "../styles/Dock.module.css";
 import { PlayerContext } from "../PlayerContext";
+import { WindowContext } from "../WindowContext";
 
 function Dock() {
   const { togglePlayer } = useContext(PlayerContext);
+  const { toggleWindow } = useContext(WindowContext);
 
   const handleBounceClick = (event, toggleFunc) => {
     const imgElement = event.currentTarget;
@@ -22,12 +24,13 @@ function Dock() {
         <ul>
           <li className={styles.dockItem}>
             <span>Finder</span>
-            <a href="#one">
+            <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224838/Finder_kmiknb.png"
                 alt="Finder"
                 width={40}
                 height={40}
+                onClick={(event) => handleBounceClick(event, toggleWindow)}
               />
             </a>
           </li>
@@ -77,7 +80,7 @@ function Dock() {
           </li>
           <li className={styles.dockItem}>
             <span>iPhoto</span>
-            <a href="#ps-one">
+            <a href="#">
               <Image
                 src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224840/iPhoto_g9ifyl.png"
                 alt="Photoshop"

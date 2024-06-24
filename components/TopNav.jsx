@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -27,6 +27,15 @@ const TopNav = () => {
   const { toggleAbout } = useContext(WindowContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleMenuOpen = (event, menu) => {
     setAnchorEl(event.currentTarget);
@@ -131,6 +140,15 @@ const TopNav = () => {
     </Menu>
   );
 
+  const formatTime = (date) => {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  };
+
   return (
     <AppBar position="static" className={styles.navbar}>
       <Toolbar>
@@ -172,23 +190,19 @@ const TopNav = () => {
                 className={styles.option}
                 component="div"
               >
-                Wed 8:59 PM
+                {currentTime.toDateString()}
+              </Typography>
+              <Typography
+                variant="h6"
+                className={styles.option}
+                component="div"
+              >
+                {formatTime(currentTime)}
               </Typography>
               <SearchIcon className={styles.option} />
               <ListIcon className={styles.option} />
             </>
           )}
-          {/* {isMobile && (
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreVertIcon />
-            </IconButton>
-          )} */}
         </Box>
       </Toolbar>
       {Object.keys(menuOptions).map((menu) => renderMenu(menu))}
