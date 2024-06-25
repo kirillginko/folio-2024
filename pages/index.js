@@ -7,6 +7,7 @@ import TopNav from "../components/TopNav";
 import Window from "../components/Window";
 import About from "../components/About";
 import Player from "../components/Player";
+import MusicPlayer from "../components/MusicPlayer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <main className={styles.main}>
           <Window />
           <About />
+          <MusicPlayer />
           <PlayerProvider>
             <Player />
             <Dock />

@@ -6,6 +6,7 @@ export const WindowProvider = ({ children }) => {
   const [isWindowOpen, setIsWindowOpen] = useState(true);
   const [isAboutOpen, setIsAboutOpen] = useState(true);
   const [isPlayerOpen, setIsPlayerOpen] = useState(true);
+  const [isMusicPlayerOpen, setIsMusicPlayerOpen] = useState(true);
 
   const toggleWindow = () => {
     setIsWindowOpen((prevIsOpen) => !prevIsOpen);
@@ -18,6 +19,9 @@ export const WindowProvider = ({ children }) => {
   const togglePlayer = () => {
     setIsPlayerOpen((prevIsOpen) => !prevIsOpen);
   };
+  const toggleMusicPlayer = () => {
+    setIsMusicPlayerOpen((prevIsOpen) => !prevIsOpen);
+  };
 
   return (
     <WindowContext.Provider
@@ -28,6 +32,8 @@ export const WindowProvider = ({ children }) => {
         toggleAbout,
         isPlayerOpen,
         togglePlayer,
+        isMusicPlayerOpen,
+        toggleMusicPlayer,
       }}
     >
       {children}
