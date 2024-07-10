@@ -55,7 +55,7 @@ const Browser = ({ children, title }) => {
             <div className={styles.navButton}></div>
             <div className={styles.navButton}></div>
           </div>
-          <input type="text" placeholder="Search Google or enter an address" />
+          <input type="text" placeholder="https://www.apple.com" />
           <div className={styles.readerButton}>Reader</div>
         </div>
       </div>
@@ -72,8 +72,8 @@ const Browser = ({ children, title }) => {
       <div className={styles.content}>
         <Image
           src="https://res.cloudinary.com/dtps5ugbf/image/upload/v1720586533/Screenshot_2024-07-10_at_00.42.03_vd6zuh.png"
-          width={800}
-          height={800}
+          width={900}
+          height={700}
           alt="content"
         />
         {children}

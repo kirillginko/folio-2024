@@ -4,8 +4,20 @@ import { Draggable } from "../gsap";
 import { WindowContext } from "../Contexts/WindowContext";
 import { ZIndexContext } from "../Contexts/ZIndexContext";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faClock,
+  faDesktop,
+  faDownload,
+  faFolder,
+  faGlobe,
+  faHdd,
+  faHome,
+  faNetworkWired,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
-const Window = () => {
+const Finder = () => {
   const { isWindowOpen, toggleWindow } = useContext(WindowContext);
   const { bringToFront, getZIndex } = useContext(ZIndexContext);
   const draggableRef = useRef(null);
@@ -34,47 +46,19 @@ const Window = () => {
     return null;
   }
 
-  const folderImages = [
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Projects",
-      label: "Projects",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Documents",
-      label: "Documents",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Library",
-      label: "Library",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Movies",
-      label: "Movies",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Music",
-      label: "Music",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Pictures",
-      label: "Pictures",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Public",
-      label: "Public",
-    },
-    {
-      src: "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png",
-      alt: "Sites",
-      label: "Sites",
-    },
+  const folderSrc =
+    "https://res.cloudinary.com/dtps5ugbf/image/upload/v1718224839/Folder_gqg2go.png";
+  const sidebarItems = [
+    { label: "Recents", icon: faClock },
+    { label: "Applications", icon: faDesktop },
+    { label: "Documents", icon: faFolder },
+    { label: "Desktop", icon: faDesktop },
+    { label: "Downloads", icon: faDownload },
+    { label: "My Folder", icon: faUser },
+    { label: "Creative Cloud Files", icon: faFolder },
+    { label: "iCloud Drive", icon: faGlobe },
+    { label: "Macintosh HD", icon: faHdd },
+    { label: "Network", icon: faNetworkWired },
   ];
 
   return (
@@ -99,23 +83,19 @@ const Window = () => {
       <div style={{ display: "flex", height: "100%" }}>
         <div className={styles["window-sidebar"]}>
           <ul>
-            <li className={styles.active}>Network</li>
-            <li>Dual G4 Panther</li>
-            <li>Stuff</li>
-            <li>Desktop</li>
-            <li>wikipedia</li>
-            <li>Applications</li>
-            <li>Documents</li>
-            <li>Movies</li>
-            <li>Music</li>
-            <li>Pictures</li>
+            {sidebarItems.map((item, index) => (
+              <li key={index} className={index === 1 ? styles.active : ""}>
+                <FontAwesomeIcon icon={item.icon} className={styles.icon} />
+                <span>{item.label}</span>
+              </li>
+            ))}
           </ul>
         </div>
         <div className={styles["window-content"]}>
-          {folderImages.map((folder, index) => (
+          {sidebarItems.map((item, index) => (
             <div className={styles.folder} key={index}>
-              <Image src={folder.src} alt={folder.alt} width={50} height={50} />
-              <span>{folder.label}</span>
+              <Image src={folderSrc} alt={item.label} width={50} height={50} />
+              <span>{item.label}</span>
             </div>
           ))}
         </div>
@@ -124,4 +104,4 @@ const Window = () => {
   );
 };
 
-export default Window;
+export default Finder;

@@ -6,7 +6,7 @@ export const WindowProvider = ({ children }) => {
   const [isWindowOpen, setIsWindowOpen] = useState(true);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isBrowserOpen, setIsBrowserOpen] = useState(true);
-  // const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
   const [isMusicPlayerOpen, setIsMusicPlayerOpen] = useState(false);
 
   const toggleWindow = () => {
@@ -21,9 +21,10 @@ export const WindowProvider = ({ children }) => {
     setIsBrowserOpen((prevIsOpen) => !prevIsOpen);
   };
 
-  // const togglePlayer = () => {
-  //   setIsPlayerOpen((prevIsOpen) => !prevIsOpen);
-  // };
+  const toggleVideoPlayer = () => {
+    setIsVideoPlayerOpen((prevIsOpen) => !prevIsOpen);
+  };
+
   const toggleMusicPlayer = () => {
     setIsMusicPlayerOpen((prevIsOpen) => !prevIsOpen);
   };
@@ -36,6 +37,8 @@ export const WindowProvider = ({ children }) => {
         isAboutOpen,
         toggleAbout,
         toggleBrowser,
+        toggleVideoPlayer,
+        isVideoPlayerOpen,
         isBrowserOpen,
         isMusicPlayerOpen,
         toggleMusicPlayer,

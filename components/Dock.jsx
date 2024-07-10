@@ -6,8 +6,7 @@ import { WindowContext } from "../Contexts/WindowContext";
 import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 function Dock() {
-  const { togglePlayer } = useContext(PlayerContext);
-  const { toggleWindow, toggleMusicPlayer, toggleBrowser } =
+  const { toggleWindow, toggleBrowser, toggleMusicPlayer, toggleVideoPlayer } =
     useContext(WindowContext);
   const { bringToFront } = useContext(ZIndexContext);
 
@@ -110,7 +109,7 @@ function Dock() {
                 width={40}
                 height={40}
                 onClick={(event) =>
-                  handleBounceClick(event, togglePlayer, "videoplayer")
+                  handleBounceClick(event, toggleVideoPlayer, "videoplayer")
                 }
               />
             </a>
