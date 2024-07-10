@@ -3,7 +3,7 @@ import React, { createContext, useState, useRef } from "react";
 export const PlayerContext = createContext();
 
 export const PlayerProvider = ({ children }) => {
-  const [isPlayerOpen, setIsPlayerOpen] = useState(true);
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);

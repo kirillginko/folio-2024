@@ -1,20 +1,24 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import styles from "../styles/Dock.module.css";
-import { PlayerContext } from "../PlayerContext";
-import { WindowContext } from "../WindowContext";
+import { PlayerContext } from "../Contexts/PlayerContext";
+import { WindowContext } from "../Contexts/WindowContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 function Dock() {
   const { togglePlayer } = useContext(PlayerContext);
-  const { toggleWindow } = useContext(WindowContext);
+  const { toggleWindow, toggleMusicPlayer, toggleBrowser } =
+    useContext(WindowContext);
+  const { bringToFront } = useContext(ZIndexContext);
 
-  const handleBounceClick = (event, toggleFunc) => {
+  const handleBounceClick = (event, toggleFunc, windowName) => {
     const imgElement = event.currentTarget;
 
     imgElement.classList.add(styles.bounce);
     setTimeout(() => {
       imgElement.classList.remove(styles.bounce);
       toggleFunc();
+      bringToFront(windowName); // Bring the corresponding window to front
     }, 800); // Match the duration of the bounce animation
   };
 
@@ -30,7 +34,9 @@ function Dock() {
                 alt="Finder"
                 width={40}
                 height={40}
-                onClick={(event) => handleBounceClick(event, toggleWindow)}
+                onClick={(event) =>
+                  handleBounceClick(event, toggleWindow, "finder")
+                }
               />
             </a>
           </li>
@@ -64,6 +70,9 @@ function Dock() {
                 alt="Chrome"
                 width={40}
                 height={40}
+                onClick={(event) =>
+                  handleBounceClick(event, toggleBrowser, "browser")
+                }
               />
             </a>
           </li>
@@ -75,6 +84,9 @@ function Dock() {
                 alt="iTunes"
                 width={40}
                 height={40}
+                onClick={(event) =>
+                  handleBounceClick(event, toggleMusicPlayer, "musicplayer")
+                }
               />
             </a>
           </li>
@@ -97,7 +109,9 @@ function Dock() {
                 alt="Premiere"
                 width={40}
                 height={40}
-                onClick={(event) => handleBounceClick(event, togglePlayer)}
+                onClick={(event) =>
+                  handleBounceClick(event, togglePlayer, "videoplayer")
+                }
               />
             </a>
           </li>

@@ -2,7 +2,7 @@
 
 .window {
   position: fixed;
-  top: 15px;
+  top: 40px;
   right: 30px;
   font-family: Arial, sans-serif;
   background-color: #ffffff;
@@ -12,8 +12,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 70em;
-  height: 40em;
+  width: 65em;
+  height: 45em;
 }
 
 .windowHeader {
@@ -27,6 +27,7 @@
   align-items: center;
   padding: 0 10px;
   position: relative;
+  z-index: 1;
 }
 
 .windowButtons {
@@ -41,6 +42,7 @@
   border-radius: 50%;
   display: inline-block;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .redButton {

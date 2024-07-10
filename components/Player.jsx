@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import styles from "../styles/Player.module.css";
 import { Draggable } from "../gsap";
-import { PlayerContext } from "../PlayerContext";
+import { PlayerContext } from "../Contexts/PlayerContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 const Player = () => {
   const {
@@ -14,9 +15,9 @@ const Player = () => {
     nextVideo,
     prevVideo,
   } = useContext(PlayerContext);
-  const draggableRef = useRef(null);
+  const { bringToFront, getZIndex } = useContext(ZIndexContext);
+  const containerRef = useRef(null);
   const handleRef = useRef(null);
-
   const progressBarRef = useRef(null);
   const [progress, setProgress] = useState(0);
 
@@ -67,38 +68,44 @@ const Player = () => {
   };
 
   useEffect(() => {
+    if (isPlayerOpen) {
+      bringToFront("videoplayer");
+    }
+  }, [isPlayerOpen, bringToFront, getZIndex]);
+
+  useEffect(() => {
     if (isPlayerOpen && typeof window !== "undefined") {
-      const draggableInstance = Draggable.create(draggableRef.current, {
+      const draggableInstance = Draggable.create(containerRef.current, {
         type: "x,y",
         edgeResistance: 0.65,
         bounds: "body",
         inertia: true,
-        trigger: handleRef.current, // Set the handle to the navbar
+        trigger: handleRef.current,
+        onPress: () => bringToFront("videoplayer"),
       });
-
-      // Set the current time and volume when player is opened
-      if (videoRef.current) {
-        videoRef.current.currentTime = currentTime;
-        videoRef.current.volume = 0.5; // Set the volume to 50%
-      }
 
       return () => {
         if (draggableInstance[0]) {
           draggableInstance[0].kill();
         }
       };
-    } else if (videoRef.current) {
-      videoRef.current.pause();
     }
-  }, [isPlayerOpen, currentTime]);
+  }, [isPlayerOpen, bringToFront]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = currentTime;
+      videoRef.current.volume = 0.5;
+    }
+  }, [isPlayerOpen, currentTime, bringToFront, getZIndex]);
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.src = playlist[currentVideoIndex];
       videoRef.current.onloadedmetadata = () => {
-        videoRef.current.currentTime = currentTime; // Ensure the current time is set when metadata is loaded
+        videoRef.current.currentTime = currentTime;
       };
-      videoRef.current.volume = 0.5; // Set the volume to 50%
+      videoRef.current.volume = 0.5;
     }
   }, [currentVideoIndex, playlist, currentTime]);
 
@@ -130,7 +137,14 @@ const Player = () => {
   }
 
   return (
-    <div className={styles.quickTimeContainer} ref={draggableRef}>
+    <div
+      className={styles.quickTimeContainer}
+      ref={containerRef}
+      style={{ zIndex: getZIndex("videoplayer") }}
+      onClick={() => {
+        bringToFront("videoplayer");
+      }}
+    >
       <div className={styles.windowHeader} ref={handleRef}>
         <div className={styles.buttons}>
           <div className={styles.close} onClick={togglePlayer}></div>
@@ -152,8 +166,14 @@ const Player = () => {
           <button className={styles.controlButton} onClick={prevVideo}>
             ⏮
           </button>
+          <button className={styles.controlButton} onClick={handleBackward}>
+            ⏪
+          </button>
           <button className={styles.controlButton} onClick={handlePlayPause}>
             ▶
+          </button>
+          <button className={styles.controlButton} onClick={handleForward}>
+            ⏩
           </button>
           <button className={styles.controlButton} onClick={nextVideo}>
             ⏭

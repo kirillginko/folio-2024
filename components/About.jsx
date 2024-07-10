@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useContext } from "react";
 import styles from "../styles/About.module.css";
 import { Draggable } from "../gsap";
 import AppleIcon from "@mui/icons-material/Apple";
-import { WindowContext } from "../WindowContext"; // Ensure the import path is correct
+import { WindowContext } from "../Contexts/WindowContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 const About = () => {
   const { isAboutOpen, toggleAbout } = useContext(WindowContext);
+  const { bringToFront, getZIndex } = useContext(ZIndexContext);
   const draggableRef = useRef(null);
   const handleRef = useRef(null);
 
@@ -16,7 +18,8 @@ const About = () => {
         edgeResistance: 0.65,
         bounds: "body",
         inertia: true,
-        trigger: handleRef.current, // Set the handle to the navbar
+        trigger: handleRef.current,
+        onPress: () => bringToFront("about"),
       });
 
       return () => {
@@ -25,21 +28,25 @@ const About = () => {
         }
       };
     }
-  }, [isAboutOpen]);
+  }, [isAboutOpen, bringToFront]);
 
   if (!isAboutOpen) {
     return null;
   }
 
   return (
-    <div ref={draggableRef} className={`${styles.container} draggable-window`}>
+    <div
+      ref={draggableRef}
+      className={`${styles.container} draggable-window`}
+      style={{ zIndex: getZIndex("about") }}
+      onClick={() => bringToFront("about")}
+    >
       <div ref={handleRef} className={`${styles.navbar}`}>
         <div className={styles.navButtons}>
           <div className={styles.redButton} onClick={toggleAbout}></div>
           <div className={styles.yellowButton}></div>
           <div className={styles.greenButton}></div>
         </div>
-        {/* <div className={styles.navTitle}>About This Mac</div> */}
       </div>
       <div className={styles.content}>
         <div className={styles.header}>

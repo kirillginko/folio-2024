@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useContext } from "react";
-import styles from "../styles/Window.module.css";
-import { Draggable } from "../gsap"; // Adjust the path as necessary
-import { WindowContext } from "../WindowContext"; // Ensure the import path is correct
-import Image from "next/image"; // Import Next.js Image component
+import styles from "../styles/Finder.module.css";
+import { Draggable } from "../gsap";
+import { WindowContext } from "../Contexts/WindowContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
+import Image from "next/image";
 
 const Window = () => {
   const { isWindowOpen, toggleWindow } = useContext(WindowContext);
+  const { bringToFront, getZIndex } = useContext(ZIndexContext);
   const draggableRef = useRef(null);
   const handleRef = useRef(null);
 
@@ -16,7 +18,8 @@ const Window = () => {
         edgeResistance: 0.65,
         bounds: "body",
         inertia: true,
-        trigger: handleRef.current, // Set the handle to the navbar
+        trigger: handleRef.current,
+        onPress: () => bringToFront("finder"),
       });
 
       return () => {
@@ -25,7 +28,7 @@ const Window = () => {
         }
       };
     }
-  }, [isWindowOpen]);
+  }, [isWindowOpen, bringToFront]);
 
   if (!isWindowOpen) {
     return null;
@@ -75,7 +78,12 @@ const Window = () => {
   ];
 
   return (
-    <div ref={draggableRef} className={`${styles.window} draggable-window`}>
+    <div
+      ref={draggableRef}
+      className={`${styles.window} draggable-window`}
+      style={{ zIndex: getZIndex("finder") }}
+      onClick={() => bringToFront("finder")}
+    >
       <div ref={handleRef} className={styles["window-header"]}>
         <div className={styles.buttons}>
           <div

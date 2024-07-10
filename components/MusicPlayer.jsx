@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useContext } from "react";
 import styles from "../styles/MusicPlayer.module.css";
 import { Draggable } from "../gsap";
-import { WindowContext } from "../WindowContext";
+import { WindowContext } from "../Contexts/WindowContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 const MusicPlayer = () => {
   const { isMusicPlayerOpen, toggleMusicPlayer } = useContext(WindowContext);
+  const { bringToFront, getZIndex } = useContext(ZIndexContext);
   const draggableRef = useRef(null);
   const handleRef = useRef(null);
 
@@ -16,6 +18,7 @@ const MusicPlayer = () => {
         bounds: "body",
         inertia: true,
         trigger: handleRef.current,
+        onPress: () => bringToFront("musicplayer"),
       });
 
       return () => {
@@ -24,14 +27,19 @@ const MusicPlayer = () => {
         }
       };
     }
-  }, [isMusicPlayerOpen]);
+  }, [isMusicPlayerOpen, bringToFront]);
 
   if (!isMusicPlayerOpen) {
     return null;
   }
 
   return (
-    <div ref={draggableRef} className={`${styles.window} draggable-window`}>
+    <div
+      ref={draggableRef}
+      className={`${styles.window} draggable-window`}
+      style={{ zIndex: getZIndex("musicplayer") }}
+      onClick={() => bringToFront("musicplayer")}
+    >
       <header ref={handleRef} className={styles.windowHeader}>
         <div className={styles.windowButtons}>
           <span className={styles.redButton} onClick={toggleMusicPlayer}></span>

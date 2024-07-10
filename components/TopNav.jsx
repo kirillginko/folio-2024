@@ -18,7 +18,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import ListIcon from "@mui/icons-material/List";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "../styles/TopNav.module.css";
-import { WindowContext } from "../WindowContext";
+import { WindowContext } from "../Contexts/WindowContext";
+import { ZIndexContext } from "../Contexts/ZIndexContext";
 
 const TopNav = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,6 +29,7 @@ const TopNav = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { bringToFront } = useContext(ZIndexContext);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -58,6 +60,7 @@ const TopNav = () => {
   const handleMenuItemClick = (option) => {
     if (option === "About This Mac") {
       toggleAbout();
+      bringToFront("about");
     }
     handleMenuClose();
     handleMobileMenuClose();
