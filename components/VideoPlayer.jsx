@@ -60,16 +60,14 @@ const VideoPlayer = () => {
       prevIndex === videoPlaylist.length - 1 ? 0 : prevIndex + 1
     );
     setVideoCurrentTime(0);
-    loadVideo(true);
-  }, [loadVideo, setVideoCurrentTime]);
+  }, [setVideoCurrentTime]);
 
   const handlePrevious = useCallback(() => {
     setCurrentVideoIndex((prevIndex) =>
       prevIndex === 0 ? videoPlaylist.length - 1 : prevIndex - 1
     );
     setVideoCurrentTime(0);
-    loadVideo(true);
-  }, [loadVideo, setVideoCurrentTime]);
+  }, [setVideoCurrentTime]);
 
   useEffect(() => {
     if (isVideoPlayerOpen) {
@@ -78,6 +76,12 @@ const VideoPlayer = () => {
       setVideoState("initial");
     }
   }, [isVideoPlayerOpen, loadVideo]);
+
+  useEffect(() => {
+    if (isVideoPlayerOpen) {
+      loadVideo(true);
+    }
+  }, [currentVideoIndex, loadVideo, isVideoPlayerOpen]);
 
   useEffect(() => {
     const videoElement = videoRef.current;

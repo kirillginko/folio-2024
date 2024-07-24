@@ -18,13 +18,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Finder = () => {
-  const { isWindowOpen, toggleWindow } = useContext(WindowContext);
+  const { isFinderOpen, toggleFinder } = useContext(WindowContext);
   const { bringToFront, getZIndex } = useContext(ZIndexContext);
   const draggableRef = useRef(null);
   const handleRef = useRef(null);
 
   useEffect(() => {
-    if (isWindowOpen && typeof window !== "undefined") {
+    if (isFinderOpen && typeof window !== "undefined") {
       const draggableInstance = Draggable.create(draggableRef.current, {
         type: "x,y",
         edgeResistance: 0.65,
@@ -40,9 +40,9 @@ const Finder = () => {
         }
       };
     }
-  }, [isWindowOpen, bringToFront]);
+  }, [isFinderOpen, bringToFront]);
 
-  if (!isWindowOpen) {
+  if (!isFinderOpen) {
     return null;
   }
 
@@ -72,7 +72,7 @@ const Finder = () => {
         <div className={styles.buttons}>
           <div
             className={`${styles.button} ${styles.close}`}
-            onClick={toggleWindow}
+            onClick={toggleFinder}
           ></div>
           <div className={`${styles.button} ${styles.minimize}`}></div>
           <div className={`${styles.button} ${styles.maximize}`}></div>

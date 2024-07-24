@@ -3,15 +3,15 @@ import React, { createContext, useState } from "react";
 export const WindowContext = createContext();
 
 export const WindowProvider = ({ children }) => {
-  const [isWindowOpen, setIsWindowOpen] = useState(true);
+  const [isFinderOpen, setIsFinderOpen] = useState(true);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isBrowserOpen, setIsBrowserOpen] = useState(true);
+  const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
   const [isMusicPlayerOpen, setIsMusicPlayerOpen] = useState(false);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0);
 
-  const toggleWindow = () => {
-    setIsWindowOpen((prevIsOpen) => !prevIsOpen);
+  const toggleFinder = () => {
+    setIsFinderOpen((prevIsOpen) => !prevIsOpen);
   };
 
   const toggleAbout = () => {
@@ -33,8 +33,8 @@ export const WindowProvider = ({ children }) => {
   return (
     <WindowContext.Provider
       value={{
-        isWindowOpen,
-        toggleWindow,
+        isFinderOpen,
+        toggleFinder,
         isAboutOpen,
         toggleAbout,
         toggleBrowser,
